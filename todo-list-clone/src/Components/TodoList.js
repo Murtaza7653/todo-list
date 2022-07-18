@@ -1,27 +1,38 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TodoForm from './TodoForm';
 import Todo from './Todo';
-export default function TodoList() {
-    // State Array that holds all TODOs
-    const [todos, setTodos] = useState([]);
 
-    // Add TODO to list
+export default function TodoList() {
+
+    let initTodo;
+    if (localStorage.getItem("todos")===null) {
+        initTodo = [];
+    } else {
+        initTodo = JSON.parse(localStorage.getItem("todos"));
+    }
+
+    const [todos, setTodos] = useState(initTodo);
+
+    useEffect(() => {
+        localStorage.setItem("todos", JSON.stringify(todos));
+    }, [todos])
+
     const addTask = task => {
         if (!task.text) {
             return
         }
 
-        const newTodos = [task, ...todos];
+        const newTodos = [...todos, task];
         setTodos(newTodos);
+        
     }
 
-    // Remove TODO from list
     const removeTask = id => {
         let updatedTasks = [...todos].filter(task => task.id !== id)
-        setTodos(updatedTasks)
+        setTodos(updatedTasks);
+        localStorage.setItem("todos", JSON.stringify(todos));
     }
 
-    // Task is completed
     const completeTask = id => {
         let updatedTasks = todos.map(todo => {
             if (todo.id === id) {

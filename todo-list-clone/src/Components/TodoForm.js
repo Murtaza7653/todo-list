@@ -5,7 +5,7 @@ export default function TodoForm(props) {
     const [input, setInput] = useState('');
 
     const handleChange = (e) => {
-        setInput(e.target.value)
+        setInput(e.target.value);
     }
 
     const handleSubmit = (e) => {
@@ -15,13 +15,18 @@ export default function TodoForm(props) {
             text: input,
             isComplete: false
         })
-        setInput('')
+        setInput('');
     }
 
     return (
-        <form className='todo-form'>
-            <input type="text" placeholder="Add a todo" onChange={handleChange} className="todo-input" value={input} name="text" />
-            <button type='submit' onClick={handleSubmit} className='todo-btn'>ADD TODO</button>
-        </form>
+
+        <form className='my-4'>
+            <h1>TODO List</h1>
+            <div className="my-3">
+            <input type="text" placeholder="Add a task" className="form-control mx-5" onChange={handleChange} value={input} name="text" id="todo" style={{fontSize:"1.25rem", width: "75%", float: "left" }} />
+            <button type="submit" className="btn btn-success" onClick={handleSubmit}>Add Task to List</button>
+        </div>
+        </form >
+
     );
 }

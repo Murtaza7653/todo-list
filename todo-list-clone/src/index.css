@@ -1,12 +1,16 @@
 body {
+  position: absolute;
+  background-color: #e3f2fd ;
+  color: #071e22;
+  min-height: 100%;
+  width: 100%;
+  padding-bottom: 5rem;
   margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-html {
-  font-size: 62.5%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 code {
